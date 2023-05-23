@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondologin"
+    tools:context=".Activity_Login">
+
+
+    <EditText
+        android:id="@+id/EditText_EmailLogin"
+        android:layout_width="210dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="121dp"
+        android:background="@null"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/ConstantEmail"
+        android:textColor="#707070"
+        app:layout_constraintBottom_toTopOf="@+id/EditText_PasswordLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/EditText_PasswordLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="121dp"
+        android:layout_marginBottom="8dp"
+        android:background="@null"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/ConstantContraseña"
+        android:textColor="#707070"
+        app:layout_constraintBottom_toTopOf="@+id/textView_OlvidastePassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.43"
+        app:layout_constraintStart_toStartOf="@+id/EditText_EmailLogin"
+        app:layout_constraintTop_toBottomOf="@+id/EditText_EmailLogin" />
+
+    <Button
+        android:id="@+id/button_InicioSesion"
+        android:layout_width="225dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#0A4D68"
+        android:textStyle="bold"
+        app:iconTint="#0A4D68"
+        android:text="@string/ConstantInicioSesion"
+        app:layout_constraintBottom_toTopOf="@+id/textView_RegistraseLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_OlvidastePassword" />
+
+    <TextView
+        android:id="@+id/textView_OlvidastePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="177dp"
+        android:backgroundTint="#0A4D68"
+        android:text="@string/ConstantOlvidasteContraseña"
+        android:textColor="#0A4D68"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_InicioSesion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EditText_PasswordLogin" />
+
+    <TextView
+        android:id="@+id/textView_RegistraseLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="166dp"
+        android:layout_marginEnd="167dp"
+        android:layout_marginBottom="249dp"
+        android:text="@string/ConstanteRegistrarse"
+        android:textColor="#0A4D68"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.583"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_InicioSesion"
+        app:layout_constraintVertical_bias="0.888" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="306dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="189dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/EditText_EmailLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.631"
+        app:srcCompat="@drawable/logobetterchat" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

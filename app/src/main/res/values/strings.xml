@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">BetterChat</string>
+    <string name="ConstantEmail">Email</string>
+    <string name="ConstanteUsuario">Usuario</string>
+    <string name="ConstantContraseña">Contraseña</string>
+    <string name="ConstantContinuar">Continuar</string>
+    <string name="ConstantConfirmaContraseña">Confirma tu Contraseña</string>
+    <string name="ConstantInicioSesion">Iniciar Sesion</string>
+    <string name="ConstantOlvidasteContraseña">¿Olvidaste tu Contraseña?</string>
+    <string name="ConstantNoTienesCuenta">¿No tienes una Cuenta?</string>
+    <string name="ConstanteRegistrarse">Crea una :)</string>
+    <string name="ConstanteSeleccionFotoPerfil">Selecciona una Foto de Perfil</string>
+    <string name="ConstanteSeleccionFotoPortada">Selecciona una Foto para tu Portada</string>
+    <string name="ConstanteCambiaTuNombre">Cambia tu nombre</string>
+    <string name="ConstanteCambiaTuBiografia">Cambia tu Biografia</string>
+    <string name="ConstanteEligeFotoPerfil">Ahora elige la foto de perfil que mas te guste!</string>
+
+</resources>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backperfil"
+    android:padding="16dp">
+
+
+    <ImageView
+        android:id="@+id/imageViewCoverPhoto"
+        android:layout_width="432dp"
+        android:layout_height="121dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="17dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/portadadefault"
+        app:layout_constraintBottom_toTopOf="@+id/textViewDisplayName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.06" />
+
+    <TextView
+        android:id="@+id/textViewDisplayName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="4dp"
+        android:padding="8dp"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textViewBiografia"
+        app:layout_constraintEnd_toStartOf="@+id/buttonEditProfile"
+        app:layout_constraintStart_toEndOf="@+id/imageViewProfilePicture"
+        app:layout_constraintTop_toTopOf="@+id/imageViewProfilePicture"
+        app:layout_constraintVertical_bias="0.222" />
+
+    <TextView
+        android:id="@+id/textViewBiografia"
+        android:layout_width="256dp"
+        android:layout_height="142dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Biografía"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageViewProfilePicture"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEditProfile" />
+
+    <ImageView
+        android:id="@+id/imageViewProfilePicture"
+        android:layout_width="115dp"
+        android:layout_height="127dp"
+        android:padding="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile_default"
+        app:layout_constraintBottom_toTopOf="@+id/textView_VerUserName"
+        app:layout_constraintEnd_toStartOf="@+id/textViewDisplayName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCoverPhoto" />
+
+    <TextView
+        android:id="@+id/textView_VerUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="95dp"
+        android:padding="8dp"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/textViewBiografia"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePicture" />
+
+    <Button
+        android:id="@+id/buttonEditProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#0A4D68"
+        android:padding="8dp"
+        android:text="Editar Perfil"
+        android:textStyle="bold"
+        app:iconTint="#0A4D68"
+        app:layout_constraintBottom_toTopOf="@+id/textViewBiografia"
+        app:layout_constraintStart_toEndOf="@+id/textViewDisplayName"
+        app:layout_constraintTop_toTopOf="@+id/imageViewProfilePicture" />
+
+    <Button
+        android:id="@+id/buttonPostStatus"
+        android:layout_width="120dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="284dp"
+        android:padding="8dp"
+        android:text="Publicar Estado"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBiografia"
+        app:layout_constraintVertical_bias="0.055" />
+
+
+    <Button
+        android:id="@+id/buttonUploadImage"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginBottom="300dp"
+        android:text="Subir Imagen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonPostStatus"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="@+id/editTextStatus"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBiografia" />
+
+    <EditText
+        android:id="@+id/editTextStatus"
+        android:layout_width="127dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginBottom="301dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonPostStatus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBiografia" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

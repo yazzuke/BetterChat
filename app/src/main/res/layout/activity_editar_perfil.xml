@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backperfil"
+        android:padding="16dp">
+
+
+    <ImageView
+        android:id="@+id/imageViewCoverPhoto"
+        android:layout_width="432dp"
+        android:layout_height="121dp"
+        android:layout_marginTop="36dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/portadadefault"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/buttonGuardarCambios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#0A4D68"
+        android:padding="8dp"
+        android:text="Guardar Cambios"
+        android:textStyle="bold"
+        app:iconTint="#0A4D68"
+        app:layout_constraintBottom_toTopOf="@+id/editTextBiografiaUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintStart_toEndOf="@+id/imageViewProfilePicture"
+        app:layout_constraintTop_toTopOf="@+id/imageViewProfilePicture" />
+
+    <ImageView
+        android:id="@+id/imageViewProfilePicture"
+        android:layout_width="115dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="25dp"
+        android:padding="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile_default"
+        app:layout_constraintBottom_toTopOf="@+id/button_ElegirFoto"
+        app:layout_constraintEnd_toStartOf="@+id/editTextBiografiaUser"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCoverPhoto" />
+
+
+    <Button
+        android:id="@+id/button_ElegirFoto"
+        android:layout_width="321dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#0A4D68"
+        android:text="@string/ConstanteSeleccionFotoPerfil"
+        android:textStyle="bold"
+        app:iconTint="#0A4D68"
+        app:layout_constraintBottom_toTopOf="@+id/button_ElegirFoto2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePicture" />
+
+    <Button
+        android:id="@+id/button_ElegirFoto2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="69dp"
+        android:backgroundTint="#0A4D68"
+        android:text="@string/ConstanteSeleccionFotoPortada"
+        android:textStyle="bold"
+        app:iconTint="#0A4D68"
+        app:layout_constraintBottom_toTopOf="@+id/button_CambiarNombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_ElegirFoto" />
+
+    <EditText
+        android:id="@+id/editTextDisplayNombre"
+        android:layout_width="172dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="109dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="104dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/ConstanteCambiaTuNombre"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_ElegirFoto2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/editTextBiografiaUser"
+        android:layout_width="253dp"
+        android:layout_height="151dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="58dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/ConstanteCambiaTuBiografia"
+        app:layout_constraintBottom_toTopOf="@+id/button_ElegirFoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageViewProfilePicture"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGuardarCambios" />
+
+    <Button
+        android:id="@+id/button_CambiarNombre"
+        android:layout_width="225dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="44dp"
+        android:backgroundTint="#0A4D68"
+        android:text="@string/ConstanteCambiaTuNombre"
+        android:textStyle="bold"
+        app:iconTint="#0A4D68"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.633"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDisplayNombre" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

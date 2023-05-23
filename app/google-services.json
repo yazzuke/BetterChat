@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "231936940829",
+    "project_id": "betterchatbd",
+    "storage_bucket": "betterchatbd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231936940829:android:275c37a3af1c3d3a825ff4",
+        "android_client_info": {
+          "package_name": "com.example.betterchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "231936940829-dpaif6d35sp3u8jthintcf4pdph0mkr5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh9eKppD7b3kmqLJRNYeBAT1GkUG7xdOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "231936940829-dpaif6d35sp3u8jthintcf4pdph0mkr5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

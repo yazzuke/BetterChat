@@ -7,6 +7,17 @@
     android:background="@drawable/backperfil"
     android:padding="16dp">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewEstados"
+        android:layout_width="372dp"
+        android:layout_height="208dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.32"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPostStatus"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageViewCoverPhoto"
@@ -21,7 +32,7 @@
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintVertical_bias="0.394" />
 
     <TextView
         android:id="@+id/textViewDisplayName"
@@ -34,23 +45,23 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textViewBiografia"
-        app:layout_constraintEnd_toStartOf="@+id/buttonEditProfile"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewEditarPerfil"
         app:layout_constraintStart_toEndOf="@+id/imageViewProfilePicture"
         app:layout_constraintTop_toTopOf="@+id/imageViewProfilePicture"
-        app:layout_constraintVertical_bias="0.222" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewBiografia"
         android:layout_width="256dp"
         android:layout_height="142dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="14dp"
         android:text="Biografía"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageViewProfilePicture"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEditProfile" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDisplayName" />
 
     <ImageView
         android:id="@+id/imageViewProfilePicture"
@@ -79,66 +90,61 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePicture" />
 
-    <Button
-        android:id="@+id/buttonEditProfile"
+    <TextView
+        android:id="@+id/textView_SubirEstado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#0A4D68"
-        android:padding="8dp"
-        android:text="Editar Perfil"
-        android:textStyle="bold"
-        app:iconTint="#0A4D68"
-        app:layout_constraintBottom_toTopOf="@+id/textViewBiografia"
-        app:layout_constraintStart_toEndOf="@+id/textViewDisplayName"
-        app:layout_constraintTop_toTopOf="@+id/imageViewProfilePicture" />
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="125dp"
+        android:layout_marginEnd="62dp"
+        android:layout_marginBottom="309dp"
+        android:text="@string/ConstanteEscribeTuMood"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonPostStatus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_VerUserName" />
 
     <Button
         android:id="@+id/buttonPostStatus"
-        android:layout_width="120dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="224dp"
+        android:layout_width="195dp"
+        android:layout_height="50dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="284dp"
         android:padding="8dp"
-        android:text="Publicar Estado"
+        android:text="@string/ConstantePublicaTuMood"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.97"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewBiografia"
-        app:layout_constraintVertical_bias="0.055" />
+        app:layout_constraintVertical_bias="0.0" />
 
+    <ImageView
+        android:id="@+id/imageViewEditarPerfil"
+        android:layout_width="45dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewBiografia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewDisplayName"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCoverPhoto"
+        app:layout_constraintVertical_bias="0.947"
+        app:srcCompat="@drawable/perfil_edit" />
 
-    <Button
-        android:id="@+id/buttonUploadImage"
-        android:layout_width="51dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginBottom="300dp"
-        android:text="Subir Imagen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonPostStatus"
-        app:layout_constraintHorizontal_bias="0.88"
-        app:layout_constraintStart_toStartOf="@+id/editTextStatus"
-        app:layout_constraintTop_toBottomOf="@+id/textViewBiografia" />
-
-    <EditText
-        android:id="@+id/editTextStatus"
-        android:layout_width="127dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="99dp"
-        android:layout_marginBottom="301dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonPostStatus"
+    <ImageView
+        android:id="@+id/imageView_LupaBuscar"
+        android:layout_width="41dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginBottom="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewCoverPhoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewBiografia" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lupita"
+        android:onClick="onSearchIconClicked" />
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

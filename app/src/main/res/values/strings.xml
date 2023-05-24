@@ -13,6 +13,8 @@
     <string name="ConstanteSeleccionFotoPortada">Selecciona una Foto para tu Portada</string>
     <string name="ConstanteCambiaTuNombre">Cambia tu nombre</string>
     <string name="ConstanteCambiaTuBiografia">Cambia tu Biografia</string>
+    <string name="ConstanteEscribeTuMood">Escribe tu mood...</string>
+    <string name="ConstantePublicaTuMood">Publica tu mood</string>
     <string name="ConstanteEligeFotoPerfil">Ahora elige la foto de perfil que mas te guste!</string>
 
 </resources>

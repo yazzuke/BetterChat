@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,46 +15,44 @@
         android:theme="@style/Theme.BetterChat"
         tools:targetApi="28">
         <activity
+            android:name=".Activity_BuscarUsuario"
+            android:label="Buscar Usuario"
+            android:theme="@style/AppTheme"
+            android:exported="false" />
+        <activity
+            android:name=".Activity_SubirEstado"
+            android:exported="false" />
+        <activity
             android:name=".Activity_EditarPerfil"
             android:exported="false"
-            android:theme="@style/AppTheme"
-            />
-
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity_PerfilUsuario"
             android:exported="false"
-            android:theme="@style/AppTheme"
-            />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:theme="@style/AppTheme"
-            />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity_SeteoFotoPerfil"
             android:exported="false"
-            android:theme="@style/AppTheme"
-            />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity_SeteoName"
             android:exported="false" />
         <activity
             android:name=".Activity_RegistroUsuario"
             android:exported="false"
-            android:theme="@style/AppTheme"
-            />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity_RegistrarUsuario"
+            android:theme="@style/AppTheme"
             android:exported="false" />
         <activity
             android:name=".Activity_Login"
             android:exported="true"
-            android:theme="@style/AppTheme"
-            >
-
-
-
-
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -60,7 +60,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

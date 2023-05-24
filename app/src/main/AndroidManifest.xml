@@ -15,10 +15,16 @@
         android:theme="@style/Theme.BetterChat"
         tools:targetApi="28">
         <activity
-            android:name=".Activity_BuscarUsuario"
-            android:label="Buscar Usuario"
-            android:theme="@style/AppTheme"
+            android:name=".Activity_RecuperarPassword"
             android:exported="false" />
+        <activity
+            android:name=".Activity_recuperarPassword"
+            android:exported="false" />
+        <activity
+            android:name=".Activity_BuscarUsuario"
+            android:exported="false"
+            android:label="Buscar Usuario"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity_SubirEstado"
             android:exported="false" />
@@ -47,8 +53,8 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity_RegistrarUsuario"
-            android:theme="@style/AppTheme"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity_Login"
             android:exported="true"

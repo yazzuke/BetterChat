@@ -39,6 +39,16 @@ public class Activity_Login extends AppCompatActivity{
         textView_OlvidastePassword = findViewById(R.id.textView_OlvidastePassword);
 
 
+        textView_OlvidastePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_Login.this,Activity_RecuperarPassword.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
         textView_RegistraseLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

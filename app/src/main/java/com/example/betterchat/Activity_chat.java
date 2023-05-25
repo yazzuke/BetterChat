@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -16,10 +17,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import com.google.android.gms.tasks.OnCompleteListener;
 import java.util.List;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import mensajes.MessagesAdapter;
@@ -36,6 +43,8 @@ public class Activity_chat extends AppCompatActivity {
 
     private String lastMessage = " ";
 
+    private FirebaseFirestore firestore;
+
     private String chatKey = " ";
 
     private boolean dataSet = false;
@@ -48,6 +57,9 @@ public class Activity_chat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+        firestore = FirebaseFirestore.getInstance();
+
 
 
         final CircleImageView userProfilePicture = findViewById(R.id.userProfilePicture);
@@ -76,7 +88,7 @@ public class Activity_chat extends AppCompatActivity {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                final String profilePictUrl = snapshot.child("username").child(email).child("coverPhotoUrl").getValue(String.class);
+                final String profilePictUrl = snapshot.child("Usuario").child("coverPhotoUrl").getValue(String.class);
 
                 if (profilePictUrl.isEmpty()) {
 
@@ -96,90 +108,57 @@ public class Activity_chat extends AppCompatActivity {
         });
 
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+        firestore.collection("chat").get()
+                .addOnCompleteListener(new OnCompleteListener <QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            // Limpiar la lista y las variables relacionadas
+                            messagesLists.clear();
+                            unseenMessages = 0;
+                            lastMessage = "";
+                            chatKey = "";
 
-                messagesLists.clear();
-                unseenMessages = 0;
-                lastMessage = "";
-                chatKey = "";
+                            // Iterar sobre los documentos de la colección "chat"
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                String getEmail = document.getId();
 
+                                dataSet = false;
 
-                for (DataSnapshot dataSnapshot : snapshot.child("username").getChildren()) {
-                    final String getEmail = dataSnapshot.getKey();
+                                if (!getEmail.equals(email)) {
+                                    // Obtener los campos necesarios del documento
+                                    String getName = document.getString("displayname");
+                                    String getProfilePicture = document.getString("coverPhotoUrl");
 
-                    dataSet= false;
+                                    // Obtener la lista de mensajes del campo "messages"
+                                    List<Map<String, Object>> messages = (List<Map<String, Object>>) document.get("messages");
+                                    if (messages != null && !messages.isEmpty()) {
+                                        for (Map<String, Object> message : messages) {
+                                            // Obtener los datos de cada mensaje
+                                            long getMessageKey = (long) message.get("key");
+                                            long getLastSeenMessage = Long.parseLong(MemoryData.getLastMsgTS(Activity_chat.this, getEmail));
+                                            lastMessage = (String) message.get("mensaje");
 
-                    if (!getEmail.equals(email)) {
-
-
-                        final String getName = dataSnapshot.child("displayname").getValue(String.class);
-                        final String getProfilePicture = dataSnapshot.child("coverPhotoUrl").getValue(String.class);
-
-                        databaseReference.child("chat").addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                int getChatCounts = (int) snapshot.getChildrenCount();
-
-                                if (getChatCounts > 0) {
-                                    for (DataSnapshot dataSnapshot1 : snapshot.getChildren()) {
-
-                                        final String getKey = dataSnapshot1.getKey();
-                                        chatKey = getKey;
-
-                                        if (dataSnapshot1.hasChild("user_1") && dataSnapshot1.hasChild("user_2") && dataSnapshot1.hasChild("messages")) {
-                                            final String getUserOne = dataSnapshot1.child("user_1").getValue(String.class);
-                                            final String getUserTwo = dataSnapshot1.child("user_2").getValue(String.class);
-
-                                            if ((getUserOne.equals(getEmail) && getUserTwo.equals(email)) || getUserOne.equals(email) && getUserTwo.equals(getEmail)) {
-
-                                                for (DataSnapshot chatDataSnapShot : dataSnapshot1.child("messages").getChildren()) {
-
-                                                    final long getMessageKey = Long.parseLong(chatDataSnapShot.getKey());
-
-                                                    final long getLastSeenMessage = Long.parseLong(MemoryData.getLastMsgTS(Activity_chat.this, getKey));
-
-                                                    lastMessage = chatDataSnapShot.child("msg").getValue(String.class);
-
-                                                    if (getMessageKey > getLastSeenMessage) {
-
-                                                        unseenMessages++;
-
-                                                    }
-                                                }
+                                            if (getMessageKey > getLastSeenMessage) {
+                                                unseenMessages++;
                                             }
                                         }
                                     }
-                                }
 
-                                if (!dataSet){
-                                    dataSet=true;
-                                    MessagesList messagesList = new MessagesList(getName, getEmail, lastMessage, getProfilePicture, unseenMessages, chatKey);
-                                    messagesLists.add(messagesList);
-                                    messagesAdapter.updateData(messagesLists);
-
+                                    if (!dataSet) {
+                                        // Agregar los datos a la lista de mensajes
+                                        dataSet = true;
+                                        MessagesList messagesList = new MessagesList(getName, getEmail, lastMessage, getProfilePicture, unseenMessages, chatKey);
+                                        messagesLists.add(messagesList);
+                                        messagesAdapter.updateData(messagesLists);
+                                    }
                                 }
                             }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
-
-
+                        }
                     }
+                });
 
-                }
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
 
     }

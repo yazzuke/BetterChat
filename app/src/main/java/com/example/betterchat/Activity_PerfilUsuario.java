@@ -37,7 +37,7 @@
     public class Activity_PerfilUsuario extends AppCompatActivity {
 
 
-        private ImageView imageViewProfilePicture, imageViewCoverPhoto, imageViewEditPhoto,imageViewLupaBuscar;
+        private ImageView imageViewProfilePicture, imageViewCoverPhoto, imageViewEditPhoto,imageViewLupaBuscar, irChats;
         private TextView textViewDisplayName, textViewUserName, textViewBiografia, textViewSubeunEstado;
         private Button buttonPostStatus;
         private RecyclerView recyclerView;
@@ -58,6 +58,7 @@
             setContentView(R.layout.activity_perfil_usuario);
 
             imageViewProfilePicture = findViewById(R.id.imageViewProfilePicture);
+            irChats = findViewById(R.id.irChats);
             imageViewCoverPhoto = findViewById(R.id.imageViewCoverPhoto);
             textViewDisplayName = findViewById(R.id.textViewDisplayName);
             textViewUserName = findViewById(R.id.textView_VerUserName);
@@ -79,6 +80,12 @@
             imageViewEditPhoto.setOnClickListener(v -> {
                 // Abrir la actividad para editar el perfil
                 Intent intent = new Intent(Activity_PerfilUsuario.this, Activity_EditarPerfil.class);
+                startActivity(intent);
+            });
+
+            irChats.setOnClickListener(v -> {
+                // Abrir la actividad para editar el perfil
+                Intent intent = new Intent(Activity_PerfilUsuario.this, Activity_chat.class);
                 startActivity(intent);
             });
 

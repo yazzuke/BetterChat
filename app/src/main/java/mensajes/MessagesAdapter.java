@@ -3,6 +3,7 @@ package mensajes;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import mensajes.MessagesList;
 
 public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyViewHolder> {
 
@@ -66,15 +68,22 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
                 intent.putExtra("chat_key", list2.getChatKey());
 
                 context.startActivity(intent);
+
+                // Agregar registro de depuración
+                Log.d("MessagesAdapter", "onClick: Starting Chats activity");
             }
         });
 
+        // Agregar registro de depuración
+        Log.d("MessagesAdapter", "onBindViewHolder: Position = " + position);
     }
 
     public void updateData(List<MessagesList> messagesLists){
         this.messagesLists = messagesLists;
         notifyDataSetChanged();
 
+        // Agregar registro de depuración
+        Log.d("MessagesAdapter", "updateData: Size = " + messagesLists.size());
     }
 
     @Override
@@ -87,9 +96,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
         private TextView name;
         private TextView lastMessage;
         private TextView unseenMessage;
-
         private LinearLayout rootLayout;
-
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -99,7 +106,6 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
             lastMessage = itemView.findViewById(R.id.lastMessage);
             unseenMessage = itemView.findViewById(R.id.unseenMessages);
             rootLayout = itemView.findViewById(R.id.rootLayout);
-
         }
     }
 }

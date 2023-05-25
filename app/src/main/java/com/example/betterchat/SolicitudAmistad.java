@@ -1,12 +1,11 @@
 package com.example.betterchat;
-
-
 public class SolicitudAmistad {
     private String usuarioEnviadorId;
     private String usuarioReceptorId;
     private String usuarioEnviadorNombre;
     private String usuarioEnviadorFotoPerfil;
     private String usuarioEnviadorUsername;
+    private String usuarioEnviadorDisplayName;
 
     public SolicitudAmistad() {
         // Constructor vacío requerido para Firebase
@@ -18,6 +17,7 @@ public class SolicitudAmistad {
         this.usuarioEnviadorNombre = usuarioEnviadorNombre;
         this.usuarioEnviadorFotoPerfil = usuarioEnviadorFotoPerfil;
         this.usuarioEnviadorUsername = usuarioEnviadorUsername;
+        this.usuarioEnviadorDisplayName = usuarioEnviadorNombre;
     }
 
     public String getUsuarioEnviadorId() {
@@ -36,12 +36,8 @@ public class SolicitudAmistad {
         this.usuarioReceptorId = usuarioReceptorId;
     }
 
-    public String getUsuarioEnviadorNombre() {
-        return usuarioEnviadorNombre;
-    }
-
     public void setUsuarioEnviadorNombre(String usuarioEnviadorNombre) {
-        this.usuarioEnviadorNombre = usuarioEnviadorNombre;
+        this.usuarioEnviadorDisplayName = usuarioEnviadorNombre;
     }
 
     public String getUsuarioEnviadorFotoPerfil() {
@@ -58,5 +54,15 @@ public class SolicitudAmistad {
 
     public void setUsuarioEnviadorUsername(String usuarioEnviadorUsername) {
         this.usuarioEnviadorUsername = usuarioEnviadorUsername;
+    }
+
+    public String getUsuarioEnviadorDisplayName() {
+        return usuarioEnviadorDisplayName;
+    }
+
+
+
+    public void setUsuarioEnviadorDisplayName(String usuarioEnviadorDisplayName) {
+        this.usuarioEnviadorDisplayName = usuarioEnviadorDisplayName;
     }
 }

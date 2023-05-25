@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +22,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -40,6 +40,7 @@ public class Activity_PerfilEncontrado extends AppCompatActivity {
 
     private FirebaseUser currentUser;
     private FirebaseFirestore db;
+    private boolean solicitudEnviada = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +73,67 @@ public class Activity_PerfilEncontrado extends AppCompatActivity {
             cargarEstadosUsuarioEncontrado(usuarioEncontradoId);
         }
 
+        // Verificar el estado de la solicitud y actualizar el botón
+        verificarEstadoSolicitud();
+
         // Configurar el OnClickListener para el botón "Enviar Solicitud"
         buttonEnviarSolicitud.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Realizar acciones al hacer clic en el botón
+                // Obtener el ID del usuario encontrado
+                String usuarioEncontradoId = getIntent().getStringExtra("usuarioEncontradoId");
+
+                // Obtener el ID y los datos del usuario actual
+                String usuarioActualId = currentUser.getUid();
+                String nombreUsuarioActual = currentUser.getDisplayName();
+                String fotoPerfilUsuarioActual = currentUser.getPhotoUrl().toString();
+
+                // Obtener el username del usuario actual desde Firestore
+                db.collection("Usuario").document(usuarioActualId)
+                        .get()
+                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                if (documentSnapshot.exists()) {
+                                    String usernameUsuarioActual = documentSnapshot.getString("username");
+
+                                    // Crear un objeto SolicitudAmistad y asignar los valores
+                                    SolicitudAmistad solicitudAmistad = new SolicitudAmistad();
+                                    solicitudAmistad.setUsuarioEnviadorId(usuarioActualId);
+                                    solicitudAmistad.setUsuarioReceptorId(usuarioEncontradoId);
+                                    solicitudAmistad.setUsuarioEnviadorNombre(nombreUsuarioActual);
+                                    solicitudAmistad.setUsuarioEnviadorFotoPerfil(fotoPerfilUsuarioActual);
+                                    solicitudAmistad.setUsuarioEnviadorUsername(usernameUsuarioActual);
+
+                                    // Guardar la solicitud en Firestore
+                                    db.collection("Usuario").document(usuarioEncontradoId)
+                                            .collection("SolicitudesEnviadas").document(usuarioActualId).set(solicitudAmistad)
+                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    // La solicitud se ha enviado correctamente
+                                                    Toast.makeText(getApplicationContext(), "Solicitud enviada", Toast.LENGTH_SHORT).show();
+                                                    solicitudEnviada = true;
+                                                    buttonEnviarSolicitud.setText("Solicitud enviada");
+                                                    buttonEnviarSolicitud.setEnabled(false);
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    // Manejar el error, si es necesario
+                                                    Toast.makeText(getApplicationContext(), "Error al enviar la solicitud", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                }
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                // Manejar el error, si es necesario
+                            }
+                        });
             }
         });
     }
@@ -147,19 +204,42 @@ public class Activity_PerfilEncontrado extends AppCompatActivity {
                 });
     }
 
-
     private void cargarEstadosUsuarioEncontrado(String usuarioEncontradoId) {
         db.collection("Usuario").document(usuarioEncontradoId).collection("Estados")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        listaEstados.clear();
-                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                        for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             Estado estado = documentSnapshot.toObject(Estado.class);
                             listaEstados.add(estado);
                         }
                         estadoAdapter.notifyDataSetChanged();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Manejar el error, si es necesario
+                    }
+                });
+    }
+
+    private void verificarEstadoSolicitud() {
+        String usuarioEncontradoId = getIntent().getStringExtra("usuarioEncontradoId");
+        String usuarioActualId = currentUser.getUid();
+
+        db.collection("Usuario").document(usuarioEncontradoId)
+                .collection("SolicitudesEnviadas").document(usuarioActualId)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            solicitudEnviada = true;
+                            buttonEnviarSolicitud.setText("Solicitud enviada");
+                            buttonEnviarSolicitud.setEnabled(false);
+                        }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

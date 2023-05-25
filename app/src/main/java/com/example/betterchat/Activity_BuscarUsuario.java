@@ -1,114 +1,78 @@
 package com.example.betterchat;
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class Activity_BuscarUsuario extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
     private EditText editTextBuscarUsuario;
-    private FirebaseRecyclerAdapter<Usuario, UsuarioViewHolder> adapter;
+    private Button buttonBuscar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscar_usuario);
 
-        recyclerView = findViewById(R.id.recyclerView_usuariosEncontrados);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        // Obtener referencias a los elementos del diseño
         editTextBuscarUsuario = findViewById(R.id.editText_BuscarUsuario);
-        editTextBuscarUsuario.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
+        buttonBuscar = findViewById(R.id.button_BuscarUsuario);
 
+        // Configurar el botón de búsqueda
+        buttonBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                String username = editTextBuscarUsuario.getText().toString().trim();
-                if (!username.isEmpty()) {
-                    buscarUsuario(username);
-                } else {
-                    adapter.stopListening();
-                }
+            public void onClick(View v) {
+                buscarUsuario();
             }
         });
     }
 
-    private void buscarUsuario(String username) {
-        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("Usuario");
+    private void buscarUsuario() {
+        // Obtener el nombre de usuario ingresado
+        String username = editTextBuscarUsuario.getText().toString().trim();
 
-        Query query = usersRef.orderByChild("username").equalTo(username);
+        // Obtener la referencia a la colección de usuarios en Firestore
+        CollectionReference usersRef = FirebaseFirestore.getInstance().collection("Usuario");
 
-        FirebaseRecyclerOptions<Usuario> options = new FirebaseRecyclerOptions.Builder<Usuario>()
-                .setQuery(query, Usuario.class)
-                .build();
+        // Construir la consulta para buscar usuarios con el nombre ingresado
+        Query query = usersRef.whereEqualTo("username", username);
 
-        adapter = new FirebaseRecyclerAdapter<Usuario, UsuarioViewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull UsuarioViewHolder holder, int position, @NonNull Usuario model) {
-                holder.bind(model);
+        // Ejecutar la consulta
+        query.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                QuerySnapshot querySnapshot = task.getResult();
+                if (querySnapshot != null && !querySnapshot.isEmpty()) {
+                    // Se encontraron usuarios con el nombre ingresado
+                    // Supongamos que tomas el primer usuario encontrado
+                    DocumentSnapshot documentSnapshot = querySnapshot.getDocuments().get(0);
+                    String userID = documentSnapshot.getId();
+
+                    // Abrir el Activity del perfil del usuario encontrado
+                    Intent intent = new Intent(Activity_BuscarUsuario.this, Activity_PerfilEncontrado.class);
+                    intent.putExtra("usuarioEncontradoId", userID);
+                    startActivity(intent);
+
+                } else {
+                    // No se encontraron usuarios con el nombre ingresado
+                    // Aquí puedes mostrar un mensaje o realizar alguna acción adicional
+                    Toast.makeText(Activity_BuscarUsuario.this, "Usuario no encontrado", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                // Ocurrió un error al realizar la consulta
+                // Aquí puedes mostrar un mensaje de error o realizar alguna acción adicional
+                Toast.makeText(Activity_BuscarUsuario.this, "Error al buscar usuario", Toast.LENGTH_SHORT).show();
             }
-
-            @NonNull
-            @Override
-            public UsuarioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_usuario, parent, false);
-                return new UsuarioViewHolder(view);
-            }
-        };
-
-        recyclerView.setAdapter(adapter);
-        adapter.startListening();
-    }
-
-    private static class UsuarioViewHolder extends RecyclerView.ViewHolder {
-        private TextView textViewNombreUsuario;
-
-        public UsuarioViewHolder(@NonNull View itemView) {
-            super(itemView);
-            textViewNombreUsuario = itemView.findViewById(R.id.textView_nombreUsuario);
-        }
-
-        public void bind(Usuario usuario) {
-            textViewNombreUsuario.setText(usuario.getUsername());
-        }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (adapter != null) {
-            adapter.startListening();
-        }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (adapter != null) {
-            adapter.stopListening();
-        }
+        });
     }
 }
-

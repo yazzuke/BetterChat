@@ -47,4 +47,7 @@ public class Estado {
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
+
+    public void setId(String estadoId) {
+    }
 }

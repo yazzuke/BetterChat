@@ -31,7 +31,6 @@
         android:layout_marginEnd="110dp"
         android:layout_marginBottom="229dp"
         android:backgroundTint="#0A4D68"
-
         android:text="subir"
         android:textStyle="bold"
         app:iconTint="#0A4D68"

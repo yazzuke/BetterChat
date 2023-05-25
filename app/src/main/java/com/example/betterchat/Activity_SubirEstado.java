@@ -109,8 +109,9 @@ public class Activity_SubirEstado extends AppCompatActivity {
     }
 
     private void uploadStatusToFirestore(String statusText, String imageUrl) {
-            Estado estado = new Estado(statusText, imageUrl, currentUser.getUid(), System.currentTimeMillis());
-        db.collection("Usuario").document(currentUser.getUid()).collection("Estados").add(estado)
+        Estado estado = new Estado(statusText, imageUrl, currentUser.getUid(), System.currentTimeMillis());
+        db.collection("Usuario").document(currentUser.getUid()).collection("Estados")
+                .add(estado)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {

@@ -122,7 +122,7 @@ public class Activity_EditarPerfil extends AppCompatActivity {
     private void uploadProfilePicture(final String displayName, final String biografia) {
         if (selectedImageUri != null) {
             if (currentUser != null) {
-                StorageReference profilePictureRef = mStorageRef.child("profilePictures/" + currentUser.getUid() + ".jpg");
+                StorageReference profilePictureRef = mStorageRef.child("FotosdePerfil/" + currentUser.getUid() + ".jpg");
                 profilePictureRef.putFile(selectedImageUri)
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override

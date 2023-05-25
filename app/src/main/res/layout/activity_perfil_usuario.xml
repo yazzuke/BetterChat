@@ -9,8 +9,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewEstados"
-        android:layout_width="372dp"
-        android:layout_height="208dp"
+        android:layout_width="379dp"
+        android:layout_height="166dp"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,10 +29,10 @@
         android:src="@drawable/portadadefault"
         app:layout_constraintBottom_toTopOf="@+id/textViewDisplayName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.394" />
+        app:layout_constraintVertical_bias="0.184" />
 
     <TextView
         android:id="@+id/textViewDisplayName"
@@ -109,14 +109,14 @@
         android:layout_width="195dp"
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="284dp"
         android:padding="8dp"
         android:text="@string/ConstantePublicaTuMood"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewBiografia"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.21" />
 
     <ImageView
         android:id="@+id/imageViewEditarPerfil"

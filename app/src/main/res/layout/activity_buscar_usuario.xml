@@ -7,34 +7,41 @@
     android:background="@drawable/backvacio"
     tools:context=".Activity_BuscarUsuario">
 
+
     <EditText
         android:id="@+id/editText_BuscarUsuario"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="152dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="271dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="259dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginBottom="110dp"
         android:ems="10"
         android:hint="Buscar usuario por nombre"
         android:inputType="text"
         android:maxLines="1"
         android:singleLine="true"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_BuscarUsuario"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_usuariosEncontrados"
-        android:layout_width="395dp"
-        android:layout_height="387dp"
-        android:layout_marginTop="16dp"
+    <Button
+        android:id="@+id/button_BuscarUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="161dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="267dp"
+        android:backgroundTint="#0A4D68"
+        android:text="subir"
+        android:textStyle="bold"
+        app:iconTint="#0A4D68"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText_BuscarUsuario"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_BuscarUsuario" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

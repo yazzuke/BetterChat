@@ -147,4 +147,13 @@
         android:onClick="onSearchIconClicked" />
         />
 
+    <ImageView
+        android:id="@+id/irChats"
+        android:layout_width="45dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/perfil_edit" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

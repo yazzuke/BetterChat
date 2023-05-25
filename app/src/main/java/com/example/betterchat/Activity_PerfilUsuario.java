@@ -37,7 +37,7 @@
     public class Activity_PerfilUsuario extends AppCompatActivity {
 
 
-        private ImageView imageViewProfilePicture, imageViewCoverPhoto, imageViewEditPhoto,imageViewLupaBuscar;
+        private ImageView imageViewProfilePicture, imageViewCoverPhoto, imageViewEditPhoto,imageViewLupaBuscar, imageViewIrChats;
         private TextView textViewDisplayName, textViewUserName, textViewBiografia, textViewSubeunEstado;
         private Button buttonPostStatus;
         private RecyclerView recyclerView;
@@ -66,6 +66,7 @@
             imageViewLupaBuscar = findViewById(R.id.imageView_LupaBuscar);
             buttonPostStatus = findViewById(R.id.buttonPostStatus);
             recyclerView = findViewById(R.id.recyclerViewEstados);
+            imageViewIrChats=findViewById(R.id.irChats);
 
             // Obtener el usuario actual
             currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -86,6 +87,12 @@
             // Configurar el OnClickListener para el botón "Publicar Estado"
             buttonPostStatus.setOnClickListener(v -> {
                 Intent intent = new Intent(Activity_PerfilUsuario.this, Activity_SubirEstado.class);
+                startActivity(intent);
+            });
+
+            imageViewIrChats.setOnClickListener(v -> {
+                // Abrir la actividad para editar el perfil
+                Intent intent = new Intent(Activity_PerfilUsuario.this, Activity_chat.class);
                 startActivity(intent);
             });
 

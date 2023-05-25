@@ -1,5 +1,7 @@
     package com.example.betterchat;
 
+    import androidx.annotation.NonNull;
+    import androidx.annotation.Nullable;
     import androidx.appcompat.app.AppCompatActivity;
     import androidx.recyclerview.widget.LinearLayoutManager;
     import androidx.recyclerview.widget.RecyclerView;
@@ -10,18 +12,24 @@
     import android.os.Bundle;
     import android.view.View;
     import android.widget.Button;
+    import android.widget.EditText;
     import android.widget.ImageView;
     import android.widget.TextView;
+    import android.widget.Toast;
 
     import com.bumptech.glide.Glide;
+    import com.google.android.gms.tasks.OnFailureListener;
+    import com.google.android.gms.tasks.OnSuccessListener;
     import com.google.firebase.auth.FirebaseAuth;
     import com.google.firebase.auth.FirebaseUser;
+    import com.google.firebase.firestore.DocumentReference;
     import com.google.firebase.firestore.DocumentSnapshot;
     import com.google.firebase.firestore.FirebaseFirestore;
     import com.google.firebase.firestore.Query;
     import com.google.firebase.firestore.QueryDocumentSnapshot;
     import com.google.firebase.storage.FirebaseStorage;
     import com.google.firebase.storage.StorageReference;
+    import com.google.firebase.storage.UploadTask;
 
     import java.util.ArrayList;
     import java.util.List;
@@ -29,8 +37,8 @@
     public class Activity_PerfilUsuario extends AppCompatActivity {
 
 
-        private ImageView imageViewProfilePicture, imageViewCoverPhoto, imageViewEditPhoto,imageViewLupaBuscar,imageViewSolicitudesAmistad;
-        private TextView textViewDisplayName, textViewUserName, textViewBiografia, textViewSubeunEstado, textViewVerAmigos;
+        private ImageView imageViewProfilePicture, imageViewCoverPhoto, imageViewEditPhoto,imageViewLupaBuscar;
+        private TextView textViewDisplayName, textViewUserName, textViewBiografia, textViewSubeunEstado;
         private Button buttonPostStatus;
         private RecyclerView recyclerView;
         private EstadoAdapter adapter;
@@ -54,12 +62,10 @@
             textViewDisplayName = findViewById(R.id.textViewDisplayName);
             textViewUserName = findViewById(R.id.textView_VerUserName);
             textViewBiografia = findViewById(R.id.textViewBiografia);
-            textViewVerAmigos = findViewById(R.id.textView_VerAmigos);
             imageViewEditPhoto = findViewById(R.id.imageViewEditarPerfil);
             imageViewLupaBuscar = findViewById(R.id.imageView_LupaBuscar);
             buttonPostStatus = findViewById(R.id.buttonPostStatus);
             recyclerView = findViewById(R.id.recyclerViewEstados);
-            imageViewSolicitudesAmistad = findViewById(R.id.imageView_SolicitudesAmistad);
 
             // Obtener el usuario actual
             currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -75,20 +81,6 @@
                 Intent intent = new Intent(Activity_PerfilUsuario.this, Activity_EditarPerfil.class);
                 startActivity(intent);
             });
-
-            imageViewSolicitudesAmistad.setOnClickListener(v -> {
-                // Abrir la actividad para editar el perfil
-                Intent intent = new Intent(Activity_PerfilUsuario.this, Activity_SolicitudesAmistad.class);
-                startActivity(intent);
-            });
-
-            textViewVerAmigos.setOnClickListener(v -> {
-                // Abrir la actividad para editar el perfil
-                Intent intent = new Intent(Activity_PerfilUsuario.this, Activity_MostrarAmigoA.class);
-                startActivity(intent);
-            });
-
-
 
 
             // Configurar el OnClickListener para el botón "Publicar Estado"

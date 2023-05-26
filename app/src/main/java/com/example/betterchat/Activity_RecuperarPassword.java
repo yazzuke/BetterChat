@@ -50,7 +50,7 @@ public class Activity_RecuperarPassword extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent intent = new Intent(Activity_RecuperarPassword.this,MainActivity.class);
+        Intent intent = new Intent(Activity_RecuperarPassword.this,Activity_Login.class);
         startActivity(intent);
         finish();
     }

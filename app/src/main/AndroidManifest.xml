@@ -51,8 +51,8 @@
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false"
+            android:name=".Activity_Login"
+            android:exported="true"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity_SeteoFotoPerfil"
@@ -70,7 +70,7 @@
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activity_Login"
+            android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/AppTheme" >
             <intent-filter>

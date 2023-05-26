@@ -18,6 +18,7 @@
     import android.widget.Toast;
 
     import com.bumptech.glide.Glide;
+    import com.example.betterchat.chats.Chats;
     import com.google.android.gms.tasks.OnFailureListener;
     import com.google.android.gms.tasks.OnSuccessListener;
     import com.google.firebase.auth.FirebaseAuth;
@@ -83,6 +84,7 @@
                 startActivity(intent);
             });
 
+            // Configurar el OnClickListener para el botón "Editar Perfil"
             irChats.setOnClickListener(v -> {
                 // Abrir la actividad para editar el perfil
                 Intent intent = new Intent(Activity_PerfilUsuario.this, Activity_chat.class);

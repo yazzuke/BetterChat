@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.example.betterchat.Amigo;
+import com.example.betterchat.AmigosAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -75,4 +77,3 @@ public class Activity_MostrarAmigoA extends AppCompatActivity {
         recyclerViewAmigos.setAdapter(amigosAdapter);
     }
 }
-

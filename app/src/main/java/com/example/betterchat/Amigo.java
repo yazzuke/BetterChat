@@ -1,5 +1,6 @@
 package com.example.betterchat;
 
+
 public class Amigo {
     private String nombre;
     private String fotoPerfil;

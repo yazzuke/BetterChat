@@ -39,7 +39,7 @@
 
 
         private ImageView imageViewProfilePicture, imageViewCoverPhoto, imageViewEditPhoto,imageViewLupaBuscar, irChats;
-        private TextView textViewDisplayName, textViewUserName, textViewBiografia, textViewSubeunEstado;
+        private TextView textViewDisplayName, textViewUserName, textViewBiografia, textViewSubeunEstado,textViewVerAmigos;
         private Button buttonPostStatus;
         private RecyclerView recyclerView;
         private EstadoAdapter adapter;
@@ -64,6 +64,7 @@
             textViewDisplayName = findViewById(R.id.textViewDisplayName);
             textViewUserName = findViewById(R.id.textView_VerUserName);
             textViewBiografia = findViewById(R.id.textViewBiografia);
+            textViewVerAmigos = findViewById(R.id.textView_VerAmigos);
             imageViewEditPhoto = findViewById(R.id.imageViewEditarPerfil);
             imageViewLupaBuscar = findViewById(R.id.imageView_LupaBuscar);
             buttonPostStatus = findViewById(R.id.buttonPostStatus);
@@ -95,6 +96,11 @@
             // Configurar el OnClickListener para el botón "Publicar Estado"
             buttonPostStatus.setOnClickListener(v -> {
                 Intent intent = new Intent(Activity_PerfilUsuario.this, Activity_SubirEstado.class);
+                startActivity(intent);
+            });
+
+            textViewVerAmigos.setOnClickListener(v -> {
+                Intent intent = new Intent(Activity_PerfilUsuario.this, Activity_MostrarAmigoA.class);
                 startActivity(intent);
             });
 

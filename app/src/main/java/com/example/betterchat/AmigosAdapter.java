@@ -43,7 +43,7 @@ public class AmigosAdapter extends RecyclerView.Adapter<AmigosAdapter.AmigoViewH
                 // Puedes usar el amigo.getNombre() para obtener el nombre del usuario
                 // y realizar la acción correspondiente
                 // Por ejemplo, puedes abrir una actividad de chat pasando el nombre del usuario como parámetro
-                Intent intent = new Intent(v.getContext(), Activity_MostrarAmigoA.class);
+                Intent intent = new Intent(v.getContext(), Activity_PerfilUsuario.class);
                 intent.putExtra("nombreUsuario", amigo.getNombre());
                 v.getContext().startActivity(intent);
             }
@@ -52,16 +52,15 @@ public class AmigosAdapter extends RecyclerView.Adapter<AmigosAdapter.AmigoViewH
         holder.imageViewPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Amigo amigo = amigosList.get(position);
-                String nombreUsuario = amigo.getNombre();
-
-                // Abre la actividad o fragmento del perfil del usuario
+                // Lógica para abrir el perfil del usuario
+                // Puedes usar el amigo.getNombre() para obtener el nombre del usuario
+                // y realizar la acción correspondiente
+                // Por ejemplo, puedes abrir una actividad de perfil pasando el nombre del usuario como parámetro
                 Intent intent = new Intent(v.getContext(), Activity_PerfilEncontrado.class);
-                intent.putExtra("nombreUsuario", nombreUsuario);
+                intent.putExtra("nombreUsuario", amigo.getNombre());
                 v.getContext().startActivity(intent);
             }
         });
-
     }
 
     @Override

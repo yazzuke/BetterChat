@@ -16,6 +16,7 @@
         tools:targetApi="28" >
         <activity
             android:name=".Activity_MostrarAmigoA"
+            android:theme="@style/AppTheme"
             android:exported="false" />
 
         <activity

@@ -9,15 +9,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewEstados"
-        android:layout_width="379dp"
-        android:layout_height="166dp"
+        android:layout_width="382dp"
+        android:layout_height="253dp"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.32"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonPostStatus"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.063" />
 
     <ImageView
         android:id="@+id/imageViewCoverPhoto"
@@ -56,6 +56,7 @@
         android:layout_height="142dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="14dp"
+        android:backgroundTint="#EAEAEA"
         android:text="Biografía"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,6 +112,10 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="284dp"
+        android:backgroundTint="#0A4D68"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:iconTint="#0A4D68"
         android:padding="8dp"
         android:text="@string/ConstantePublicaTuMood"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -136,28 +141,24 @@
         android:id="@+id/imageView_LupaBuscar"
         android:layout_width="41dp"
         android:layout_height="30dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginBottom="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewCoverPhoto"
+        android:layout_marginStart="340dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="onSearchIconClicked"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/lupita"
-        android:onClick="onSearchIconClicked" />
+        app:srcCompat="@drawable/buscaramigos" />
 
     <ImageView
         android:id="@+id/imageView_SolicitudesAmistad"
-        android:layout_width="56dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="330dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="9dp"
+        android:layout_width="45dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewEstados"
-        app:srcCompat="@drawable/anadiramigo" />
+        app:srcCompat="@drawable/agregaramigo" />
 
     <TextView
         android:id="@+id/textView_VerAmigos"
@@ -182,6 +183,17 @@
         android:layout_marginStart="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/perfil_edit" />
+        app:srcCompat="@drawable/chats" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="31dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="257dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_LupaBuscar"
+        app:layout_constraintHorizontal_bias="0.587"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

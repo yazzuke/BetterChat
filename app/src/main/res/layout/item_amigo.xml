@@ -1,9 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="100dp"
-    android:orientation="horizontal">
+    android:layout_marginTop="230dp"
 
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/imageViewFotoPerfil"
@@ -15,10 +15,12 @@
         android:id="@+id/textViewNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="10dp"
+        android:textColor="#FFF"
+        android:textStyle="bold"
         android:layout_weight="1"
-        android:textAppearance="?android:textAppearanceMedium" />
+        android:layout_marginStart="10dp"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_gravity="center_vertical" />
 
     <ImageView
         android:id="@+id/imageViewChat"

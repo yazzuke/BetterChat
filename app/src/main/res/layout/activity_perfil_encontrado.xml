@@ -84,6 +84,9 @@
     <Button
         android:id="@+id/buttonEnviarSolicitud"
         android:layout_width="126dp"
+        android:backgroundTint="#0A4D68"
+        android:textStyle="bold"
+        app:iconTint="#0A4D68"
         android:layout_height="43dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="18dp"

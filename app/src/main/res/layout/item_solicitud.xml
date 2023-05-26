@@ -11,12 +11,16 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="16sp"
+        android:textColor="#FFF"
         android:textStyle="bold"
         android:paddingEnd="8dp"/>
 
     <Button
         android:id="@+id/buttonAceptar"
         android:layout_width="wrap_content"
+        android:backgroundTint="#008000"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:text="Aceptar"/>
 
@@ -24,5 +28,8 @@
         android:id="@+id/buttonRechazar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FF3636"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
         android:text="Rechazar"/>
 </LinearLayout>

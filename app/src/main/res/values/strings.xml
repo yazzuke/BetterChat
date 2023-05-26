@@ -15,6 +15,7 @@
     <string name="ConstanteCambiaTuBiografia">Cambia tu Biografia</string>
     <string name="ConstanteEscribeTuMood">Escribe tu mood...</string>
     <string name="ConstantePublicaTuMood">Publica tu mood</string>
+    <string name="ConstanteBuscar">Buscar Usuario </string>
     <string name="ConstanteEligeFotoPerfil">Ahora elige la foto de perfil que mas te guste!</string>
     <string name="title_activity_mostrar_amigos">Activity_MostrarAmigos</string>
     <!-- Strings used for fragments for navigation -->

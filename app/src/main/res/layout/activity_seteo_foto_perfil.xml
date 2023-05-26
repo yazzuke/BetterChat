@@ -25,11 +25,13 @@
 
     <Button
         android:id="@+id/button_ElegirFoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="242dp"
+        android:layout_height="52dp"
         android:layout_marginTop="56dp"
+        android:background="@drawable/rodondo"
         android:backgroundTint="#0A4D68"
         android:text="@string/ConstanteSeleccionFotoPerfil"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:iconTint="#0A4D68"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,19 +40,22 @@
 
     <Button
         android:id="@+id/button_ContinuarFoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="145dp"
+        android:layout_height="59dp"
         android:layout_marginTop="35dp"
         android:layout_marginBottom="172dp"
+        android:background="@drawable/rodondo"
         android:backgroundTint="#0A4D68"
         android:text="@string/ConstantContinuar"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:iconTint="#0A4D68"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_ElegirFoto" />
+        app:layout_constraintTop_toBottomOf="@+id/button_ElegirFoto"
+        app:layout_constraintVertical_bias="0.918" />
 
     <TextView
         android:id="@+id/textView_SeteoFotoPerfil"

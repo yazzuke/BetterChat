@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="CloudCustomPersistentConfigurations">
+    <option name="myCloudPersistentConfigurations">
+      <list>
+        <CloudPersistentConfiguration>
+          <option name="name" value="SM-X900, Samsung" />
+          <option name="devices">
+            <list>
+              <option value="SH-01L" />
+              <option value="b0q" />
+              <option value="gts8uwifi" />
+            </list>
+          </option>
+          <option name="apiLevels">
+            <list>
+              <option value="34" />
+              <option value="33" />
+            </list>
+          </option>
+          <option name="languages">
+            <list>
+              <option value="es" />
+            </list>
+          </option>
+          <option name="orientations">
+            <list>
+              <option value="portrait" />
+            </list>
+          </option>
+        </CloudPersistentConfiguration>
+      </list>
+    </option>
+  </component>
+</module>

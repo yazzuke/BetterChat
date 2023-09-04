@@ -9,15 +9,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewEstados"
-        android:layout_width="382dp"
-        android:layout_height="253dp"
+        android:layout_width="347dp"
+        android:layout_height="245dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonPostStatus"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintVertical_bias="0.235" />
 
     <ImageView
         android:id="@+id/imageViewCoverPhoto"
@@ -186,7 +187,7 @@
         app:srcCompat="@drawable/chats" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView_salirsesion"
         android:layout_width="31dp"
         android:layout_height="35dp"
         android:layout_marginEnd="257dp"

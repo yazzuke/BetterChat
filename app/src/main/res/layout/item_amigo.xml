@@ -28,7 +28,6 @@
         android:layout_height="50dp"
         android:layout_weight="1"
         android:clickable="true"
-        android:onClick="openChat"
         android:src="@drawable/chat" />
 
     <ImageView
@@ -37,7 +36,6 @@
         android:layout_height="50dp"
         android:layout_weight="1"
         android:clickable="true"
-        android:onClick="openPerfil"
         android:src="@drawable/abrirperfil" />
 
 </LinearLayout>
